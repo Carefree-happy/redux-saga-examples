@@ -1,3 +1,23 @@
+import { createRoot } from "react-dom/client"
+import { applyMiddleware, createStore } from "redux"
+import createSagaMiddleware from "redux-saga"
+
+import ErrorGenerator from "./components/ErrorGenerator"
+import reducer from "./reducers"
+import rootSaga from "./sagas"
+
+const sagaMiddleware = createSagaMiddleware()
+const store = createStore(reducer, applyMiddleware(sagaMiddleware))
+sagaMiddleware.run(rootSaga)
+
+const action = type => store.dispatch({ type })
+
+const rootElement = document.getElementById("root")
+
+const root = createRoot(rootElement)
+
+root.render(<ErrorGenerator value={store.getState()} action={action} />)
+/*
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
@@ -14,3 +34,4 @@ root.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+*/
