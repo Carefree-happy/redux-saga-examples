@@ -1,37 +1,36 @@
-import { createRoot } from "react-dom/client"
-import { applyMiddleware, createStore } from "redux"
-import createSagaMiddleware from "redux-saga"
+// import { createRoot } from "react-dom/client"
+// import { applyMiddleware, createStore } from "redux"
+// import createSagaMiddleware from "redux-saga"
 
-import ErrorGenerator from "./components/ErrorGenerator"
-import reducer from "./reducers"
-import rootSaga from "./sagas"
+// import ErrorGenerator from "./components/ErrorGenerator"
+// import reducer from "./reducers"
+// import rootSaga from "./sagas"
 
-const sagaMiddleware = createSagaMiddleware()
-const store = createStore(reducer, applyMiddleware(sagaMiddleware))
-sagaMiddleware.run(rootSaga)
+// const sagaMiddleware = createSagaMiddleware()
+// const store = createStore(reducer, applyMiddleware(sagaMiddleware))
+// sagaMiddleware.run(rootSaga)
 
-const action = type => store.dispatch({ type })
+// const action = type => store.dispatch({ type })
 
-const rootElement = document.getElementById("root")
+// const rootElement = document.getElementById("root")
 
-const root = createRoot(rootElement)
+// const root = createRoot(rootElement)
 
-root.render(<ErrorGenerator value={store.getState()} action={action} />)
-/*
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App";
-import "./index.css";
-import reportWebVitals from "./reportWebVitals";
+// root.render(<ErrorGenerator value={store.getState()} action={action} />)
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+import React from "react"
+import ReactDOM from "react-dom/client"
+import App from "./App"
+import "./index.css"
+import reportWebVitals from "./reportWebVitals"
+
+const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+    <React.StrictMode>
+        <App />
+    </React.StrictMode>
+)
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
-*/
+reportWebVitals()
